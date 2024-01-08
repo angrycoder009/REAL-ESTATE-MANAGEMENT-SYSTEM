@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import OAuth from '../components/OAuth';
 import {db} from "../firebase";
 import {getAuth , createUserWithEmailAndPassword , updateProfile} from "firebase/auth"
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 export default function SignUp() {
   const[showPassword , setShowPassword] =useState(false);
   const [formData , setFormData] = useState({
@@ -13,6 +17,7 @@ export default function SignUp() {
     password : "",
   })
   const{name,email , password} = formData;
+  const navigate =  useNavigate();
   function onChange(e){
    setFormData((prevState)=>({
     ...prevState,
@@ -28,9 +33,14 @@ export default function SignUp() {
       const userCredential = await createUserWithEmailAndPassword(auth,email,password);
       updateProfile(auth.currentUser,{displayName : name})
       const user = userCredential.user
-      console.log(user);
+      const formDataCopy = {...formData};
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
+      await setDoc(doc(db,"users", user.uid),formDataCopy);
+      navigate("/");
+      toast.success("Sing Up's Successful!!!")
     } catch (error) {
-      console.log(error);
+     toast.error("something went wrong");
       
     }
   }
@@ -76,7 +86,7 @@ export default function SignUp() {
            transition duration-150 ease-in-out
            hover:shadow-lg
            active:bg-blue-800"
-          >Sign in</button>
+          >Sign up</button>
           <div className="flex items-center my-4
             before:border-t before:flex-1 before:border-gray-300
            after:border-t after:flex-1 after:border-gray-300">
