@@ -54,15 +54,15 @@ export default function SignUp() {
         </div>
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
           <form onSubmit={onSubmit} >
-          <input className="mb-6 w-full px-4 py-2 text-xl text-gray-700
-            bg-white border-gray-700 rounded transition ease-out " type="text" id="name"
+          <input className="mb-6 w-full px-4 py-2
+           text-white border-2 border-black focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 " type="text" id="name"
             value={name}  onChange={ onChange} placeholder="Full name"/>
-            <input className="mb-6 w-full px-4 py-2 text-xl text-gray-700
-            bg-white border-gray-700 rounded transition ease-out " type="email" id="email"
+            <input className="mb-6 w-full px-4 py-2
+           text-white border-2 border-black focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200  " type="email" id="email"
             value={email}  onChange={ onChange} placeholder="email address"/>
             <div className="relative mb-6">
-            <input className="w-full px-4 py-2 text-xl text-gray-700
-            bg-white border-gray-700 rounded transition ease-out "  type={showPassword ? "text":"password"} id="password"
+            <input className="mb-6 w-full px-4 py-2
+           text-white border-2 border-black focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200  "  type={showPassword ? "text":"password"} id="password"
             value={password}  onChange={ onChange} placeholder="password"/>
             {showPassword ? (<FaEyeSlash  className="absolute right-3 top-3 text-3xl cursor-pointer"onClick={()=>setShowPassword((prevState)=>!prevState)} />):(<FaEye  className="absolute right-3 top-3 text-3xl cursor-pointer" onClick={()=>setShowPassword((prevState)=>!prevState)}/>)}
             </div>
