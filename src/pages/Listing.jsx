@@ -6,6 +6,7 @@ import Spinner from '../components/Spinner';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css/bundle";
+import { FaShareFromSquare } from "react-icons/fa6";
 export default function Listing() {
   const params = useParams();
   const [listing,setListing]=useState(null);
@@ -25,7 +26,7 @@ export default function Listing() {
   if(loading){
     return <Spinner/>
   }
-  return  <main>
+  return  <main >
     <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         slidesPerView={1}
@@ -47,7 +48,16 @@ export default function Listing() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div onClick={()=>{
+        navigator.clipboard.writeText(window.location.href)
+      }}
+      className='fixed top-[27%] right-[3%] z-50 text-[2rem] bg-white cursor-pointer
+      border-gray-400 rounded-full w-12 h-12 flex items-center text-center justify-center
+      hover:bg-gray-600 active:bg-gray-900
+      '>
+      <FaShareFromSquare />
       
+      </div>
     </main>;
   
 }
