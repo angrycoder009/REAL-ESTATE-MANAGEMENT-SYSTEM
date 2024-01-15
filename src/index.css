@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 body{
-    background-color: rgb(240, 253, 244);
+    background-color:rgba(255, 255, 255, 1);
+    .swiper-button-next ::after,
+    .swiper-button-prev ::after{
+        color:#a8dadc;
+    }
 }
