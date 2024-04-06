@@ -24,7 +24,7 @@ export default function Header() {
     <div className='bg-white border-b shadow-white sticky top-0 z-40'>
       <header className='flex justify-between items-center px-3 max-w-6xl mx-auto'>
         <div>
-          <img src ="https://i.pinimg.com/736x/1e/b8/ab/1eb8ab6b49ad617cfe91c462d963f310.jpg"alt="logo"  className='w-48 h-32 m-2 cursor-pointer' onClick={()=>navigate("/")}/>
+          <img src ="https://i.pinimg.com/736x/1e/b8/ab/1eb8ab6b49ad617cfe91c462d963f310.jpg"alt="logo"  className='w-48 h-12 m-2 cursor-pointer object-cover ' onClick={()=>navigate("/")}/>
         </div>
         <div>
           <ul className='flex space-x-10'>
